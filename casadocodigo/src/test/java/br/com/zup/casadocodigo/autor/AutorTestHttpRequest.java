@@ -33,8 +33,6 @@ public class AutorTestHttpRequest {
         json.append("\"nome\"" + ":" + "\"Hill, Napoleon\",");
         json.append("\"descricao\"" + ":" + "\"paraiso novo autor\"");
         json.append("} ");
-//        String json = "{\"email\":\"admin@email.com\",\"nome\":\"asdasdas\",\"descricao\":\"aasdasdasd\"}";
-//        String json = "{\"email\":\"invalido@email.com\",\"senha\":\"123456\"}";
         mockMvc
                 .perform(MockMvcRequestBuilders
                         .post(uri)
