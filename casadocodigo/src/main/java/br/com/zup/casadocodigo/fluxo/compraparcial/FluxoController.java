@@ -23,14 +23,17 @@ public class FluxoController {
     @Autowired
     private DadosPessoaisCpfCnpjBindValidator documentoCpnCnpjValidator;
 
+    @Autowired
+    private VerificaPaisEstado verificaPaisEstado;
+
     @InitBinder
     public void InitBinder(WebDataBinder binder){
-        binder.addValidators(this.documentoCpnCnpjValidator);
+        binder.addValidators(this.documentoCpnCnpjValidator,this.verificaPaisEstado);
     }
-
 
     @PostMapping("/cadastro-parcial")
     public ResponseEntity<?> create(@RequestBody @Valid FluxoFormRequest request) {
+
         DadosPessoais dadosPessoais  =request.toModel(this.manager);
 
         return ResponseEntity.status(HttpStatus.OK).body(dadosPessoais);

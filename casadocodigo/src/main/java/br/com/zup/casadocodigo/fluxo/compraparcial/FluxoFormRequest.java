@@ -4,11 +4,10 @@ import br.com.zup.casadocodigo.estado.Estado;
 import br.com.zup.casadocodigo.pais.Pais;
 
 import javax.persistence.EntityManager;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 public class FluxoFormRequest {
 
@@ -36,9 +35,20 @@ public class FluxoFormRequest {
     @NotBlank(message = "informe um cep.")
     private String cep;
 
+    public Optional<Estado> toEstado(EntityManager manager){
+
+        if(Optional.ofNullable(this.idEstado).isEmpty()) return  Optional.ofNullable(null);
+        return Optional.ofNullable( manager.find(Estado.class,this.idEstado));
+    }
+
+    public Optional<Pais> toPais(EntityManager manager) {
+        if(Optional.ofNullable(this.idPais).isEmpty()) return Optional.ofNullable(null);
+        return  Optional.ofNullable(manager.find(Pais.class,this.idPais));
+    }
     public DadosPessoais toModel(EntityManager manager) {
-        Pais pais = manager.find(Pais.class,this.idPais);
-        Estado estado = manager.find(Estado.class,this.idEstado);
+        Pais pais = toPais(manager).get();
+        Estado estado = toEstado(manager).get();
+
         return new DadosPessoais(this.email,
                 this.nome,
                 this.sobrenome,

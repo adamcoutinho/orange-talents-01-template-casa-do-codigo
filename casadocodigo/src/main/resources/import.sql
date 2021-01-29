@@ -62,4 +62,4 @@ insert into estado(id,nome,pais) values(NEXTVAL('sq_estado'),  'Santa Catarina' 
 insert into estado(id,nome,pais) values(NEXTVAL('sq_estado'),  'Sergipe'              ,1);
 insert into estado(id,nome,pais) values(NEXTVAL('sq_estado'),  'São Paulo'            ,1);
 insert into estado(id,nome,pais) values(NEXTVAL('sq_estado'),  'Tocantins'            ,1);
-insert into estado(id,nome,pais) values(NEXTVAL('sq_estado'),  'Exterior'             ,1);
+insert into estado(id,nome,pais) values(NEXTVAL('sq_estado'),  'Exterior'             ,2);
