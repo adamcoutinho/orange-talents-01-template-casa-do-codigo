@@ -27,10 +27,8 @@ public class FluxoFormRequest {
     private String complemento;
     @NotBlank(message = "informe uma cidade.")
     private String cidade;
-    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull(message = "pais não pode ser nulo.")
     private Long idPais;
-    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull(message = "estado não pode ser nulo.")
     private Long  idEstado;
     @NotBlank(message = "informe um telefone.")
